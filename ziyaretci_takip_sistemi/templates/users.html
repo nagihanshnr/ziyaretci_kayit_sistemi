@@ -1,0 +1,47 @@
+{% extends "dashboardbase.html" %}
+
+{% block title %}Kullanıcı Listesi{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Kayıtlı Kullanıcılar</h1>
+
+{% if users %}
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Ad Soyad</th>
+            <th>E-posta</th>
+            <th colspan="2">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <a href="{{ url_for('user_update', user_id=user.id) }}" class="btn btn-sm btn-outline-success">
+                    <i class="bi bi-pencil-square"></i> Güncelle
+                </a>
+            </td>
+            <td>
+                <form method="POST" action="{{ url_for('user_delete', user_id=user.id) }}"
+                    onsubmit="return confirm('Bu kullanıcıyı silmek istediğinizden emin misiniz?');"
+                    style="display:inline;">
+                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                        <i class="bi bi-trash"></i> Sil
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info" role="alert">
+    Henüz kayıtlı kullanıcı yok.
+</div>
+{% endif %}
+{% endblock %}

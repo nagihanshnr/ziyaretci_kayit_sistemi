@@ -1,0 +1,8 @@
+[
+    {
+        "id": 1,
+        "name": "Nagihan Şahiner",
+        "email": "nagihanshnr@gmail.com",
+        "password": "scrypt:32768:8:1$O7R53pLrw6wPHAVb$d60509b6acc88bba546292874d7cfb222863b3cc50451fdbc99e8d50a40988528daa659da580e282611744206cc625fbfc4df6eb55ecc56c8c1bb28b4cbb10d9"
+    }
+]

@@ -1,0 +1,28 @@
+{% extends "dashboardbase.html" %}
+
+{% block title %}Ziyaretçi Güncelle{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Ziyaretçi Bilgilerini Güncelle</h2>
+    <form method="POST" action="{{ url_for('visitor_update', visitor_id=visitor.id) }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Ad Soyad</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{ visitor.name }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-posta</label>
+            <input type="email" class="form-control" id="email" name="email" value="{{ visitor.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="tel" class="form-label">Telefon</label>
+            <input type="tel" class="form-control" id="tel" name="tel" value="{{ visitor.tel }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Ziyaret Tarihi</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{ visitor.visit_date }}" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Güncelle</button>
+    </form>
+</div>
+{% endblock %}

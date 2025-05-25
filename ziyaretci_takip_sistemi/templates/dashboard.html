@@ -1,0 +1,99 @@
+{% extends "dashboardbase.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="container mt-3">
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="mb-4 text-secondary">Hoş Geldiniz, {{ current_user.name }}</h1>
+
+            <!-- İstatistik Kartları -->
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <div class="card bg-secondary text-white">
+                        <div class="card-body">
+                            <h5 class="card-title">Toplam Ziyaretçi : {{ total_visitors }}</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body" style="text-decoration: none;">
+                            <a href="{{ url_for('visitor_list') }}">
+                                <h5 class="card-title" style="color: white;">Ziyaretçi Listesi</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-dark text-white">
+                        <div class="card-body" style="text-decoration: none;">
+                            <a href="{{ url_for('visitor_add') }}">
+                                <h5 class="card-title" style="color: white;">Ziyaretçi Ekle</h5>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                {% if visitors %}
+                {% for visitor in visitors %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="card-text">{{ visitor.name }}</p>
+                            <h5 class="card-title">{{ visitor.first_name }} {{ visitor.last_name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ visitor.visit_date }}</h6>
+
+                            <span class="badge bg-secondary">{{ visitor.type }}</span>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <div class="d-flex justify-content-between">
+                                <a href="{{ url_for('visitor_update', visitor_id=visitor.id) }}"
+                                    class="btn btn-outline-success btn-sm">
+                                    <i class="bi bi-pencil-square"></i> Güncelle
+                                </a>
+                                <a href="{{ url_for('visitor_list') }}" class="btn btn-outline-dark btn-sm">
+                                    <i class="bi bi-eye"></i> Detaylar
+                                </a>
+                                <form method="POST" action="{{ url_for('visitor_delete', visitor_id=visitor.id) }}"
+                                    style="display:inline;"
+                                    onsubmit="return confirm('Bu ziyaretçiyi silmek istediğinize emin misiniz?');">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="bi bi-trash"></i> Sil
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="col-12">
+                    <div class="alert alert-secondary" role="alert">
+                        Henüz kayıtlı ziyaretçi bulunmamaktadır. <a href="{{ url_for('visitor_add') }}"
+                            class="alert-link">Yeni ziyaretçi ekle</a>.
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

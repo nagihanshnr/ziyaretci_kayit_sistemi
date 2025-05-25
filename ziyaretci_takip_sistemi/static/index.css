@@ -1,0 +1,86 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Başlık alanı */
+h1.display-4 {
+    font-weight: 700;
+    color: #343a40;
+}
+
+p.lead {
+    color: #6c757d;
+}
+
+/* Kartlar */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    color: #343a40;
+}
+
+.card p {
+    color: #6c757d;
+}
+
+/* Butonlar */
+.btn-outline-secondary, 
+.btn-outline-dark,
+.btn-secondary,
+.btn-dark {
+    border-radius: 12px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-outline-secondary:hover,
+.btn-outline-dark:hover,
+.btn-secondary:hover,
+.btn-dark:hover {
+    transform: scale(1.03);
+}
+
+/* Tablo */
+.table {
+    margin-bottom: 0;
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.badge.bg-success {
+    font-size: 0.9rem;
+}
+
+/* Liste ikonları */
+.list-group-item i {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+/* Responsive padding/margin düzenlemeleri */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    .btn-lg {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
+}

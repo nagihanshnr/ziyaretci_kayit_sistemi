@@ -1,0 +1,71 @@
+:root {
+    --primary-color: #6c757d;
+    --secondary-color: #495057;
+    --accent-color: #343a40;
+    --light-gray: #e9ecef;
+    --medium-gray: #ced4da;
+    --dark-gray: #495057;
+}
+a{ text-decoration: none;
+
+}
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    background-color: var(--light-gray);
+}
+
+.auth-buttons {
+    margin-left: auto;
+}
+
+.footer {
+    background-color: var(--dark-gray);
+    color: white;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer h5 {
+    font-weight: 600;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--light-gray);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}

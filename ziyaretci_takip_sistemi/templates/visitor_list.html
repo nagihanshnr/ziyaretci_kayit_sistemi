@@ -1,0 +1,36 @@
+{% extends "dashboardbase.html" %}
+
+{% block title %}Ziyaretçi Listesi{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Kayıtlı Ziyaretçiler</h1>
+
+{% if visitors %}
+<table class="table table-bordered table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Ad Soyad</th>
+            <th>E-posta</th>
+            <th>Telefon</th>
+            <th>Kayıt Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for visitor in visitors %}
+        <tr>
+            <td>{{ visitor.id }}</td>
+            <td>{{ visitor.name }}</td>
+            <td>{{ visitor.email }}</td>
+            <td>{{ visitor.tel }}</td>
+            <td>{{ visitor.registered_on.strftime("%Y-%m-%d %H:%M:%S") }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info" role="alert">
+    Henüz kayıtlı ziyaretçi yok.
+</div>
+{% endif %}
+{% endblock %}

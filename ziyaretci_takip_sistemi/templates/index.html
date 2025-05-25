@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Ana Sayfa - Ziyaretçi Kayıt Sistemi{% endblock %}
+
+{% block content %}
+<!-- CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+<!-- Giriş Mesajı -->
+<div class="row mt-5">
+    <div class="col-md-8 offset-md-2 text-center">
+        <h1 class="display-4 mb-4">Ziyaretçi Kayıt Sistemine Hoş Geldiniz</h1>
+        <p class="lead mb-4">Ziyaretçi kayıtlarınızı kolayca oluşturun, düzenleyin ve yönetin.</p>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a href="{{ url_for('register') }}" class="btn btn-secondary btn-lg px-4">Hemen Başla</a>
+            <a href="{{ url_for('login') }}" class="btn btn-outline-dark btn-lg px-4">Giriş Yap</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-person-plus display-4 text-secondary mb-3"></i>
+                <h3>Yeni Ziyaretçi Kaydı</h3>
+                <p>Ziyaretçi bilgilerini kaydedin.</p>
+                <a href="{{ url_for('register') }}" class="btn btn-outline-secondary mt-2">Kayıt Oluştur</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-person-lines-fill display-4 text-secondary mb-3"></i>
+                <h3>Ziyaretçi Listesi</h3>
+                <p>Kayıtlı ziyaretçileri yönetin.</p>
+                <a href="{{ url_for('visitor_list') }}" class="btn btn-outline-secondary mt-2">Detaylı Bilgi</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-center">
+            <div class="card-body">
+                <i class="bi bi-shield-lock display-4 text-secondary mb-3"></i>
+                <h3>Güvenli Kayıt</h3>
+                <p>Verileriniz güvende.</p>
+                <a href="{{ url_for('users') }}" class="btn btn-outline-secondary mt-2">Detaylı Bilgi</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
