@@ -4,6 +4,7 @@ from flask_login import LoginManager, login_user, logout_user, login_required, U
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import os
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'gizli_key'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'  # SQLite kullanılıyor
@@ -202,7 +203,7 @@ def user_delete(user_id):
         db.session.rollback()
         flash('Kullanıcı silinirken bir hata oluştu.', 'danger')
     return redirect(url_for('users'))  # users sayfasına yönlendir
-    
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", part=int(os.environ.get("PORT", 5000)))
  
